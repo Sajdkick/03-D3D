@@ -96,23 +96,7 @@ void CreateTriangleData()
 	{
 		float x, y, z;
 		float r, g, b;
-	}
-	triangleVertices[3] =
-	{
-		0.0f, 0.5f, 0.0f,	//v0 pos
-		1.0f, 0.0f, 0.0f,	//v0 color
 
-		0.5f, -0.5f, 0.0f,	//v1
-		0.0f, 1.0f, 0.0f,	//v1 color
-
-		-0.5f, -0.5f, 0.0f, //v2
-		0.0f, 0.0f, 0.0f	//v2 color
-	};
-
-	D3D11_BUFFER_DESC bufferDesc;
-	memset(&bufferDesc, 0, sizeof(bufferDesc));
-	bufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	bufferDesc.Usage = D3D11_USAGE_DEFAULT;
 	bufferDesc.ByteWidth = sizeof(triangleVertices);
 
 	D3D11_SUBRESOURCE_DATA data;
@@ -175,14 +159,7 @@ int WINAPI wWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdL
 		while (WM_QUIT != msg.message)
 		{
 			if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
-			{
-				TranslateMessage(&msg);
-				DispatchMessage(&msg);
-			}
-			else
-			{
-				Render(); //8. Rendera
-
+			
 				gSwapChain->Present(0, 0); //9. Växla front- och back-buffer
 			}
 		}
@@ -203,15 +180,7 @@ int WINAPI wWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdL
 	return (int) msg.wParam;
 }
 
-HWND InitWindow(HINSTANCE hInstance)
-{
-	WNDCLASSEX wcex = { 0 };
-	wcex.cbSize = sizeof(WNDCLASSEX); 
-	wcex.style          = CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc    = WndProc;
-	wcex.hInstance      = hInstance;
-	wcex.lpszClassName = L"BTH_D3D_DEMO";
-	if (!RegisterClassEx(&wcex))
+wcex))
 		return false;
 
 	RECT rc = { 0, 0, 640, 480 };
@@ -234,16 +203,6 @@ HWND InitWindow(HINSTANCE hInstance)
 }
 
 LRESULT CALLBACK WndProc( HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam )
-{
-	switch (message) 
-	{
-	case WM_DESTROY:
-		PostQuitMessage(0);
-		break;		
-	}
-
-	return DefWindowProc(hWnd, message, wParam, lParam);
-}
 
 HRESULT CreateDirect3DContext(HWND wndHandle)
 {
