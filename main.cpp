@@ -97,6 +97,20 @@ void CreateTriangleData()
 		float x, y, z;
 		float r, g, b;
 
+<<<<<<< HEAD
+=======
+		0.5f, -0.5f, 0.0f,	//v1
+		0.0f, 1.0f, 0.0f,	//v1 color
+
+		-0.5f, -0.5f, 0.0f, //v2
+		0.0f, 0.0f, 0.5f	//v2 color
+	};
+
+	D3D11_BUFFER_DESC bufferDesc;
+	memset(&bufferDesc, 0, sizeof(bufferDesc));
+	bufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	bufferDesc.Usage = D3D11_USAGE_DEFAULT;
+>>>>>>> parent of 4bd492e... Something
 	bufferDesc.ByteWidth = sizeof(triangleVertices);
 
 	D3D11_SUBRESOURCE_DATA data;
