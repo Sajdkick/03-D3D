@@ -106,7 +106,7 @@ void CreateTriangleData()
 		0.0f, 1.0f, 0.0f,	//v1 color
 
 		-0.5f, -0.5f, 0.0f, //v2
-		0.0f, 0.0f, 0.5f	//v2 color
+		0.0f, 0.0f, 0.0f	//v2 color
 	};
 
 	D3D11_BUFFER_DESC bufferDesc;
